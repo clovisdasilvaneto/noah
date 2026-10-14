@@ -4,7 +4,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { BlobShadow, Motes, PlasticEnvironment, StaticBricks, type StaticBrick } from '../three/common'
 import { Minifig, NOAH, makePose, type Look } from '../three/Minifig'
-import { BH, COLORS, brickGeometry, planeGeo, plastic } from '../three/bricks'
+import { BH, COLORS, PLATE, brickGeometry, planeGeo, plastic } from '../three/bricks'
 import { baseplateMaterial, skyMaterial } from '../three/shaders'
 import { useGame } from '../store'
 import { playNarration } from '../game/narration'
@@ -12,7 +12,7 @@ import { Dialogue } from '../ui/Dialogue'
 import { animalsCallLines, animalsCallTitle } from '../i18n/animalsCall'
 import { damp, ramp, resetCamera, useCinematicCamera, type Shot, type V3 } from './cutscene/rig'
 import { Glow, GodLight, Grass, HoloBricks, glowMaterial, grassMaterial, makeHoloUniforms } from './cutscene/fx'
-import { ARK_TOP, Animal, Ark, Dove, OliveTree, holoAnimals, tentBricks, type AnimalKind } from './cutscene/models'
+import { ARK_TOP, Animal, Ark, RAMP_HINGE_Z, RAMP_LEN, RAMP_TILT, Dove, OliveTree, holoAnimals, tentBricks, type AnimalKind } from './cutscene/models'
 
 export { animalsCallTitle }
 
@@ -41,11 +41,17 @@ const FAMILY: { look: Look; p: V3; ry: number }[] = [
 ]
 
 // boarding path: ramp foot, up the ramp to the door, then inside
-const RAMP_FOOT: V3 = [1.45, 0, 2.4]
-const DOOR_SILL: V3 = [1.45, 1.15, -2.0]
-const INSIDE: V3 = [1.45, 1.15, -3.6]
+// ramp ends in world space, derived from the ramp in the Ark model so the walkers stay on its surface
+const toWorld = (y: number, z: number): [number, number] => [ARK_POS[1] + y * ARK_SCALE, ARK_POS[2] + z * ARK_SCALE]
+const [SILL_Y, SILL_Z] = toWorld(BH, RAMP_HINGE_Z)
+const [, FOOT_Z] = toWorld(0, RAMP_HINGE_Z + RAMP_LEN * Math.cos(RAMP_TILT))
+const CLEAT = PLATE * ARK_SCALE * 0.5 // feet ride on the cross cleats
+const RAMP_APPROACH: V3 = [1.45, 0, FOOT_Z + 0.9] // line up in front of the ramp before stepping on
+const RAMP_FOOT: V3 = [1.45, CLEAT * 0.3, FOOT_Z]
+const DOOR_SILL: V3 = [1.45, SILL_Y + CLEAT, SILL_Z]
+const INSIDE: V3 = [1.45, SILL_Y, -3.6]
 function boardingPath(start: V3, d: number, out: THREE.Vector3) {
-  const pts = [start, RAMP_FOOT, DOOR_SILL, INSIDE]
+  const pts = [start, RAMP_APPROACH, RAMP_FOOT, DOOR_SILL, INSIDE]
   let rest = d
   for (let k = 0; k < pts.length - 1; k++) {
     const a = pts[k]

@@ -91,6 +91,11 @@ export function arkBlueprint(at: V3, scale = 1): HoloBrick[] {
 /** Height of the top of the ark's roof in local units. */
 export const ARK_TOP = 5 * BH + PLATE + BH * 3 + BH * (2 / 3) * 4
 export const ARK_DOOR: V3 = [DOOR_X, BH, 5 * P]
+/** Boarding ramp, local units: hinge just outside the hull at sill height, length and tilt chosen so
+ *  the far end touches the ground when the ark sits BH * 0.34 above it (as in AnimalsCallScene). */
+export const RAMP_HINGE_Z = 4.5 * P
+export const RAMP_LEN = 6 * P
+export const RAMP_TILT = Math.asin((BH + BH * 0.34) / RAMP_LEN)
 
 /** The finished ark with an open door and a boarding ramp. */
 export function Ark({ position, rotation = 0, scale = 1 }: { position: V3; rotation?: number; scale?: number }) {
@@ -98,11 +103,12 @@ export function Ark({ position, rotation = 0, scale = 1 }: { position: V3; rotat
   return (
     <group position={position} rotation={[0, rotation, 0]} scale={scale}>
       <StaticBricks bricks={bricks} />
-      {/* ramp down from the door */}
-      <group position={[DOOR_X, BH * 1.0, 4 * P]} rotation={[0.2, 0, 0]}>
-        <Brick w={3} d={6} h={1 / 3} color={COLORS.gopher} position={[0, 0, 1.2]} studs={false} />
+      {/* ramp down from the door: hinged at the sill with its top surface at y=0,
+          tilted so the far end lands on the ground (see RAMP_* in AnimalsCallScene) */}
+      <group position={[DOOR_X, BH, RAMP_HINGE_Z]} rotation={[RAMP_TILT, 0, 0]}>
+        <Brick w={3} d={6} h={1 / 3} color={COLORS.gopher} position={[0, -PLATE, RAMP_LEN / 2]} studs={false} />
         {[0, 1, 2, 3].map((i) => (
-          <Brick key={i} w={3} d={1} h={1 / 3} color={COLORS.brown} position={[0, PLATE, 0.4 + i * 0.55]} studs={false} />
+          <Brick key={i} w={3} d={1} h={1 / 3} color={COLORS.brown} position={[0, 0, 0.4 + i * 0.55]} studs={false} />
         ))}
       </group>
       {/* wooden blocks under the hull */}
