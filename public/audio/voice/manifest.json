@@ -1,0 +1,543 @@
+{
+  "model": "google/gemini-3.8-flash-tts",
+  "voices": {
+    "pt": {
+      "narrator": "Sulafat",
+      "god": "Charon"
+    },
+    "en": {
+      "narrator": "Sulafat",
+      "god": "Charon"
+    },
+    "es": {
+      "narrator": "Sulafat",
+      "god": "Charon"
+    },
+    "de": {
+      "narrator": "Sulafat",
+      "god": "Charon"
+    }
+  },
+  "clips": {
+    "en": {
+      "call-0": {
+        "file": "en/call-0.mp3",
+        "duration": 9.44
+      },
+      "call-1": {
+        "file": "en/call-1.mp3",
+        "duration": 15.84
+      },
+      "call-2": {
+        "file": "en/call-2.mp3",
+        "duration": 10.23
+      },
+      "call-3": {
+        "file": "en/call-3.mp3",
+        "duration": 11.93
+      },
+      "call-4": {
+        "file": "en/call-4.mp3",
+        "duration": 13.89
+      },
+      "call-5": {
+        "file": "en/call-5.mp3",
+        "duration": 13.32
+      },
+      "call-6": {
+        "file": "en/call-6.mp3",
+        "duration": 12.12
+      },
+      "call-7": {
+        "file": "en/call-7.mp3",
+        "duration": 20.15
+      },
+      "call-8": {
+        "file": "en/call-8.mp3",
+        "duration": 10.59
+      },
+      "after": {
+        "file": "en/after.mp3",
+        "duration": 9.08
+      },
+      "final": {
+        "file": "en/final.mp3",
+        "duration": 5.51
+      },
+      "animals-call-0": {
+        "file": "en/animals-call-0.mp3",
+        "duration": 14.49
+      },
+      "animals-call-1": {
+        "file": "en/animals-call-1.mp3",
+        "duration": 9.3
+      },
+      "animals-call-2": {
+        "file": "en/animals-call-2.mp3",
+        "duration": 27.63
+      },
+      "animals-call-3": {
+        "file": "en/animals-call-3.mp3",
+        "duration": 14.67
+      },
+      "animals-call-4": {
+        "file": "en/animals-call-4.mp3",
+        "duration": 4.05
+      },
+      "animals-call-5": {
+        "file": "en/animals-call-5.mp3",
+        "duration": 9.76
+      },
+      "flood-0": {
+        "file": "en/flood-0.mp3",
+        "duration": 11.43
+      },
+      "flood-1": {
+        "file": "en/flood-1.mp3",
+        "duration": 14.75
+      },
+      "flood-2": {
+        "file": "en/flood-2.mp3",
+        "duration": 10.46
+      },
+      "flood-3": {
+        "file": "en/flood-3.mp3",
+        "duration": 21.45
+      },
+      "flood-4": {
+        "file": "en/flood-4.mp3",
+        "duration": 5.07
+      },
+      "flood-5": {
+        "file": "en/flood-5.mp3",
+        "duration": 13.82
+      },
+      "flood-6": {
+        "file": "en/flood-6.mp3",
+        "duration": 7.42
+      },
+      "flood-7": {
+        "file": "en/flood-7.mp3",
+        "duration": 7.99
+      },
+      "flood-8": {
+        "file": "en/flood-8.mp3",
+        "duration": 12.88
+      },
+      "flood-9": {
+        "file": "en/flood-9.mp3",
+        "duration": 6.99
+      },
+      "flood-10": {
+        "file": "en/flood-10.mp3",
+        "duration": 21.1
+      },
+      "flood-11": {
+        "file": "en/flood-11.mp3",
+        "duration": 11.76
+      },
+      "flood-12": {
+        "file": "en/flood-12.mp3",
+        "duration": 9.09
+      },
+      "flood-13": {
+        "file": "en/flood-13.mp3",
+        "duration": 14.52
+      },
+      "animals-final": {
+        "file": "en/animals-final.mp3",
+        "duration": 11.43
+      }
+    },
+    "pt": {
+      "call-0": {
+        "file": "pt/call-0.mp3",
+        "duration": 10.32
+      },
+      "call-1": {
+        "file": "pt/call-1.mp3",
+        "duration": 12.45
+      },
+      "call-2": {
+        "file": "pt/call-2.mp3",
+        "duration": 12.41
+      },
+      "call-3": {
+        "file": "pt/call-3.mp3",
+        "duration": 14.2
+      },
+      "call-4": {
+        "file": "pt/call-4.mp3",
+        "duration": 16.07
+      },
+      "call-5": {
+        "file": "pt/call-5.mp3",
+        "duration": 15.48
+      },
+      "call-6": {
+        "file": "pt/call-6.mp3",
+        "duration": 12.73
+      },
+      "call-7": {
+        "file": "pt/call-7.mp3",
+        "duration": 33.12
+      },
+      "call-8": {
+        "file": "pt/call-8.mp3",
+        "duration": 12.48
+      },
+      "after": {
+        "file": "pt/after.mp3",
+        "duration": 11.78
+      },
+      "final": {
+        "file": "pt/final.mp3",
+        "duration": 6.6
+      },
+      "animals-call-0": {
+        "file": "pt/animals-call-0.mp3",
+        "duration": 15.19
+      },
+      "animals-call-1": {
+        "file": "pt/animals-call-1.mp3",
+        "duration": 8.96
+      },
+      "animals-call-2": {
+        "file": "pt/animals-call-2.mp3",
+        "duration": 26.82
+      },
+      "animals-call-3": {
+        "file": "pt/animals-call-3.mp3",
+        "duration": 15.06
+      },
+      "animals-call-4": {
+        "file": "pt/animals-call-4.mp3",
+        "duration": 4.77
+      },
+      "animals-call-5": {
+        "file": "pt/animals-call-5.mp3",
+        "duration": 9.69
+      },
+      "flood-0": {
+        "file": "pt/flood-0.mp3",
+        "duration": 10.6
+      },
+      "flood-1": {
+        "file": "pt/flood-1.mp3",
+        "duration": 15.59
+      },
+      "flood-2": {
+        "file": "pt/flood-2.mp3",
+        "duration": 11.25
+      },
+      "flood-3": {
+        "file": "pt/flood-3.mp3",
+        "duration": 21.05
+      },
+      "flood-4": {
+        "file": "pt/flood-4.mp3",
+        "duration": 5.42
+      },
+      "flood-5": {
+        "file": "pt/flood-5.mp3",
+        "duration": 17.48
+      },
+      "flood-6": {
+        "file": "pt/flood-6.mp3",
+        "duration": 8.93
+      },
+      "flood-7": {
+        "file": "pt/flood-7.mp3",
+        "duration": 7.43
+      },
+      "flood-8": {
+        "file": "pt/flood-8.mp3",
+        "duration": 13.63
+      },
+      "flood-9": {
+        "file": "pt/flood-9.mp3",
+        "duration": 8.33
+      },
+      "flood-10": {
+        "file": "pt/flood-10.mp3",
+        "duration": 19.58
+      },
+      "flood-11": {
+        "file": "pt/flood-11.mp3",
+        "duration": 12.61
+      },
+      "flood-12": {
+        "file": "pt/flood-12.mp3",
+        "duration": 9.28
+      },
+      "flood-13": {
+        "file": "pt/flood-13.mp3",
+        "duration": 16.66
+      },
+      "animals-final": {
+        "file": "pt/animals-final.mp3",
+        "duration": 10.6
+      }
+    },
+    "es": {
+      "call-0": {
+        "file": "es/call-0.mp3",
+        "duration": 11.48
+      },
+      "call-1": {
+        "file": "es/call-1.mp3",
+        "duration": 13.77
+      },
+      "call-2": {
+        "file": "es/call-2.mp3",
+        "duration": 11.2
+      },
+      "call-3": {
+        "file": "es/call-3.mp3",
+        "duration": 13.15
+      },
+      "call-4": {
+        "file": "es/call-4.mp3",
+        "duration": 16.66
+      },
+      "call-5": {
+        "file": "es/call-5.mp3",
+        "duration": 17.48
+      },
+      "call-6": {
+        "file": "es/call-6.mp3",
+        "duration": 11.4
+      },
+      "call-7": {
+        "file": "es/call-7.mp3",
+        "duration": 30.99
+      },
+      "call-8": {
+        "file": "es/call-8.mp3",
+        "duration": 10.1
+      },
+      "after": {
+        "file": "es/after.mp3",
+        "duration": 10.55
+      },
+      "final": {
+        "file": "es/final.mp3",
+        "duration": 5.7
+      },
+      "animals-call-0": {
+        "file": "es/animals-call-0.mp3",
+        "duration": 16.35
+      },
+      "animals-call-1": {
+        "file": "es/animals-call-1.mp3",
+        "duration": 10.09
+      },
+      "animals-call-2": {
+        "file": "es/animals-call-2.mp3",
+        "duration": 23.25
+      },
+      "animals-call-3": {
+        "file": "es/animals-call-3.mp3",
+        "duration": 16.16
+      },
+      "animals-call-4": {
+        "file": "es/animals-call-4.mp3",
+        "duration": 4.25
+      },
+      "animals-call-5": {
+        "file": "es/animals-call-5.mp3",
+        "duration": 9.81
+      },
+      "flood-0": {
+        "file": "es/flood-0.mp3",
+        "duration": 11.23
+      },
+      "flood-1": {
+        "file": "es/flood-1.mp3",
+        "duration": 14.98
+      },
+      "flood-2": {
+        "file": "es/flood-2.mp3",
+        "duration": 11.67
+      },
+      "flood-3": {
+        "file": "es/flood-3.mp3",
+        "duration": 20.81
+      },
+      "flood-4": {
+        "file": "es/flood-4.mp3",
+        "duration": 5.48
+      },
+      "flood-5": {
+        "file": "es/flood-5.mp3",
+        "duration": 14.5
+      },
+      "flood-6": {
+        "file": "es/flood-6.mp3",
+        "duration": 9.06
+      },
+      "flood-7": {
+        "file": "es/flood-7.mp3",
+        "duration": 8.2
+      },
+      "flood-8": {
+        "file": "es/flood-8.mp3",
+        "duration": 14.65
+      },
+      "flood-9": {
+        "file": "es/flood-9.mp3",
+        "duration": 8.76
+      },
+      "flood-10": {
+        "file": "es/flood-10.mp3",
+        "duration": 20.54
+      },
+      "flood-11": {
+        "file": "es/flood-11.mp3",
+        "duration": 11.42
+      },
+      "flood-12": {
+        "file": "es/flood-12.mp3",
+        "duration": 9.57
+      },
+      "flood-13": {
+        "file": "es/flood-13.mp3",
+        "duration": 16.93
+      },
+      "animals-final": {
+        "file": "es/animals-final.mp3",
+        "duration": 11.23
+      }
+    },
+    "de": {
+      "call-0": {
+        "file": "de/call-0.mp3",
+        "duration": 11.46
+      },
+      "call-1": {
+        "file": "de/call-1.mp3",
+        "duration": 13.26
+      },
+      "call-2": {
+        "file": "de/call-2.mp3",
+        "duration": 11.76
+      },
+      "call-3": {
+        "file": "de/call-3.mp3",
+        "duration": 11.45
+      },
+      "call-4": {
+        "file": "de/call-4.mp3",
+        "duration": 19.08
+      },
+      "call-5": {
+        "file": "de/call-5.mp3",
+        "duration": 17.83
+      },
+      "call-6": {
+        "file": "de/call-6.mp3",
+        "duration": 12.84
+      },
+      "call-7": {
+        "file": "de/call-7.mp3",
+        "duration": 31.64
+      },
+      "call-8": {
+        "file": "de/call-8.mp3",
+        "duration": 9.3
+      },
+      "after": {
+        "file": "de/after.mp3",
+        "duration": 10.51
+      },
+      "final": {
+        "file": "de/final.mp3",
+        "duration": 6.36
+      },
+      "animals-call-0": {
+        "file": "de/animals-call-0.mp3",
+        "duration": 14.53
+      },
+      "animals-call-1": {
+        "file": "de/animals-call-1.mp3",
+        "duration": 10.31
+      },
+      "animals-call-2": {
+        "file": "de/animals-call-2.mp3",
+        "duration": 28.06
+      },
+      "animals-call-3": {
+        "file": "de/animals-call-3.mp3",
+        "duration": 15.92
+      },
+      "animals-call-4": {
+        "file": "de/animals-call-4.mp3",
+        "duration": 5.15
+      },
+      "animals-call-5": {
+        "file": "de/animals-call-5.mp3",
+        "duration": 8.71
+      },
+      "flood-0": {
+        "file": "de/flood-0.mp3",
+        "duration": 12.27
+      },
+      "flood-1": {
+        "file": "de/flood-1.mp3",
+        "duration": 14.96
+      },
+      "flood-2": {
+        "file": "de/flood-2.mp3",
+        "duration": 11.38
+      },
+      "flood-3": {
+        "file": "de/flood-3.mp3",
+        "duration": 19.94
+      },
+      "flood-4": {
+        "file": "de/flood-4.mp3",
+        "duration": 5.37
+      },
+      "flood-5": {
+        "file": "de/flood-5.mp3",
+        "duration": 14.71
+      },
+      "flood-6": {
+        "file": "de/flood-6.mp3",
+        "duration": 8.9
+      },
+      "flood-7": {
+        "file": "de/flood-7.mp3",
+        "duration": 8.32
+      },
+      "flood-8": {
+        "file": "de/flood-8.mp3",
+        "duration": 15.14
+      },
+      "flood-9": {
+        "file": "de/flood-9.mp3",
+        "duration": 8.91
+      },
+      "flood-10": {
+        "file": "de/flood-10.mp3",
+        "duration": 21.35
+      },
+      "flood-11": {
+        "file": "de/flood-11.mp3",
+        "duration": 11.36
+      },
+      "flood-12": {
+        "file": "de/flood-12.mp3",
+        "duration": 10.14
+      },
+      "flood-13": {
+        "file": "de/flood-13.mp3",
+        "duration": 16.6
+      },
+      "animals-final": {
+        "file": "de/animals-final.mp3",
+        "duration": 12.27
+      }
+    }
+  }
+}

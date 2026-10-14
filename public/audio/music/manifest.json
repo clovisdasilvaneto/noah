@@ -1,0 +1,40 @@
+{
+  "model": "fal-ai/stable-audio-3/small/music/text-to-audio",
+  "tracks": {
+    "menu": {
+      "file": "menu.mp3",
+      "duration": 72.0,
+      "loop": true
+    },
+    "call": {
+      "file": "call.mp3",
+      "duration": 80.0,
+      "loop": true
+    },
+    "gather": {
+      "file": "gather.mp3",
+      "duration": 83.0,
+      "loop": true
+    },
+    "complete": {
+      "file": "complete.mp3",
+      "duration": 38.0,
+      "loop": true
+    },
+    "animals": {
+      "file": "animals.mp3",
+      "duration": 85.0,
+      "loop": true
+    },
+    "storm": {
+      "file": "storm.mp3",
+      "duration": 81.5,
+      "loop": true
+    },
+    "promise": {
+      "file": "promise.mp3",
+      "duration": 90.0,
+      "loop": true
+    }
+  }
+}

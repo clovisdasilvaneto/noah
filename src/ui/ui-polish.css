@@ -1,0 +1,461 @@
+/*
+ * UI polish layer: display typography + the flag language picker.
+ * Loaded after index.css, so equal-specificity rules here win. Rules in the
+ * typography section only set family/weight/tracking, never font-size, so the
+ * responsive sizes in index.css keep working.
+ */
+
+/* ================= typography ================= */
+
+/* Fredoka: rounded, chunky, moulded-plastic letterforms for anything a child
+   reads at a glance (titles, buttons, counters, labels). Scripture keeps
+   Cormorant; long UI copy keeps DM Sans. */
+
+.game-title,
+.chapter-title,
+.complete-title,
+.pause-panel h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+.game-title {
+  line-height: 1;
+  /* stacked offsets read like an extruded toy brick */
+  text-shadow:
+    0 2px 0 #e9b448,
+    0 5px 0 #8a5a22,
+    0 9px 16px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(255, 210, 120, 0.45);
+}
+
+.chapter-title {
+  line-height: 1.08;
+  text-shadow:
+    0 3px 0 rgba(60, 35, 10, 0.55),
+    0 2px 22px rgba(0, 0, 0, 0.55);
+}
+
+.complete-title,
+.pause-panel h2 {
+  font-size: 32px;
+  color: #6b3f16;
+}
+
+.game-subtitle {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-size: clamp(16px, 4.2vw, 22px);
+}
+
+.chapter-num {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.btn {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.stud-num,
+.tally-num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.toast {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.objectives {
+  font-family: var(--display);
+  font-weight: 500;
+}
+
+.objectives li.current {
+  font-weight: 600;
+}
+
+.obj-count {
+  font-weight: 700;
+}
+
+.prompt {
+  font-family: var(--display);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.speaker {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.npc-name {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.npc-bubble {
+  font-family: var(--display);
+  font-weight: 500;
+  line-height: 1.28;
+}
+
+.faith-label {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ================= language picker ================= */
+
+.lang-screen {
+  --flag-size: clamp(110px, 33vw, 150px);
+  --rim: #fff6dc;
+  --rim-edge: #c7b27c;
+  --rim-shade: #9a8150;
+}
+
+.lang-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(18px, 5vh, 40px);
+  max-width: 100%;
+}
+
+.lang-heading {
+  margin: 0;
+  text-align: center;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(22px, 5.6vw, 38px);
+  line-height: 1.15;
+  color: #fff8e1;
+  text-wrap: balance;
+  text-shadow:
+    0 2px 0 #8a5a22,
+    0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.lang-flags {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 26px clamp(26px, 9vw, 44px);
+  justify-content: center;
+}
+
+/* landscape phones, tablets and desktop: one row */
+@media (min-aspect-ratio: 1/1), (min-width: 720px) {
+  .lang-screen {
+    --flag-size: clamp(96px, min(28vh, 17vw), 150px);
+  }
+  .lang-flags {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+/* the shared WebGL surface, under the buttons, a little larger than the grid so
+   squash and bounce never get clipped */
+.lang-gl {
+  position: absolute;
+  inset: -32px;
+  width: calc(100% + 64px);
+  height: calc(100% + 64px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.flag-btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  touch-action: manipulation;
+  animation: flag-in 0.55s cubic-bezier(0.25, 1.5, 0.45, 1) calc(0.25s + var(--i, 0) * 0.08s) both;
+}
+
+.flag-disc {
+  --ring: 0 0 0 0 transparent;
+  position: relative;
+  display: block;
+  width: var(--flag-size);
+  height: var(--flag-size);
+  border-radius: 50%;
+  background: var(--flag) center / cover no-repeat;
+  box-shadow:
+    var(--ring),
+    0 0 0 7px var(--rim),
+    0 0 0 9px var(--rim-edge),
+    0 9px 0 7px var(--rim-shade),
+    0 10px 0 9px rgba(60, 40, 10, 0.35),
+    0 18px 26px 8px rgba(0, 0, 0, 0.38);
+  transition:
+    transform 0.16s cubic-bezier(0.3, 1.6, 0.5, 1),
+    box-shadow 0.12s ease;
+}
+
+/* WebGL paints the flag underneath; the disc itself becomes the lens */
+.gl-on .flag-disc {
+  background: none;
+}
+
+.flag-gloss {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 56% 30% at 46% 15%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.08) 68%, transparent 71%),
+    radial-gradient(circle at 74% 80%, rgba(255, 255, 255, 0.18), transparent 26%);
+  box-shadow:
+    inset 0 -10px 16px rgba(0, 0, 0, 0.28),
+    inset 0 5px 6px rgba(255, 255, 255, 0.35),
+    inset 0 0 0 2px rgba(70, 45, 10, 0.28);
+}
+
+/* a tiny moulded stud highlight, like the top of a brick */
+.flag-gloss::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  top: 22%;
+  width: 11%;
+  height: 7%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  filter: blur(1.5px);
+  transform: rotate(-35deg);
+}
+
+.flag-name {
+  display: inline-block;
+  padding: 5px 14px 6px;
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.1;
+  box-shadow: 0 3px 0 #c9b98f, 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.16s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+/* current language: gold rim, gold plate, and a check stud */
+.flag-btn.is-current .flag-disc {
+  --rim: #ffd54a;
+  --rim-edge: #e2a91a;
+  --rim-shade: #9c6f08;
+}
+
+.flag-btn.is-current .flag-name {
+  background: linear-gradient(180deg, #ffe07a, var(--gold));
+  color: #3a2a00;
+  box-shadow: 0 3px 0 var(--gold-deep), 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.flag-btn.is-current .flag-disc::after {
+  content: '✓';
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #fff3b0, var(--gold) 55%, var(--gold-deep));
+  color: #4a3300;
+  font: 700 18px/1 var(--display);
+  box-shadow: 0 3px 0 #8a6206, 0 4px 8px rgba(0, 0, 0, 0.35);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flag-btn:hover .flag-disc {
+    transform: translateY(-5px) scale(1.03);
+  }
+  .flag-btn:hover .flag-name {
+    transform: translateY(-2px);
+  }
+}
+
+.flag-btn:focus-visible .flag-disc {
+  --ring: 0 0 0 15px var(--gold-glow);
+}
+
+.flag-btn:focus-visible .flag-name {
+  outline: 3px solid var(--gold-glow);
+  outline-offset: 2px;
+}
+
+/* press: squash into the table */
+.flag-btn:active .flag-disc {
+  transform: translateY(5px) scale(1.07, 0.9);
+  transition-duration: 0.07s;
+}
+
+.flag-btn.is-chosen .flag-disc {
+  animation: flag-bounce 0.45s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+
+.flag-btn.is-chosen .flag-name {
+  animation: plate-pop 0.4s cubic-bezier(0.3, 1.8, 0.5, 1) both;
+}
+
+.has-chosen .flag-btn {
+  pointer-events: none;
+}
+
+/* ---------- celebration burst ---------- */
+
+.lang-fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.burst {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.burst-ring {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid var(--gold-glow);
+  box-shadow: 0 0 18px rgba(255, 224, 138, 0.9);
+  animation: ring-out 0.5s cubic-bezier(0.15, 0.7, 0.3, 1) both;
+}
+
+.burst-brick,
+.burst-spark {
+  position: absolute;
+  animation: piece-fly 0.7s cubic-bezier(0.15, 0.75, 0.35, 1) var(--delay, 0s) both;
+}
+
+.burst-brick {
+  left: -7px;
+  top: -5px;
+  width: 14px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--c);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* the stud on top of each brick */
+.burst-brick::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: -3px;
+  width: 8px;
+  height: 4px;
+  border-radius: 2px 2px 0 0;
+  background: var(--c);
+  filter: brightness(1.15);
+}
+
+.burst-spark {
+  left: -7px;
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  background: #fff8c8;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  filter: drop-shadow(0 0 4px rgba(255, 220, 120, 0.9));
+}
+
+@keyframes flag-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.6);
+  }
+}
+
+@keyframes flag-bounce {
+  0% {
+    transform: translateY(5px) scale(1.1, 0.86);
+  }
+  40% {
+    transform: translateY(-14px) scale(0.94, 1.08);
+  }
+  70% {
+    transform: translateY(0) scale(1.04, 0.97);
+  }
+  100% {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+@keyframes plate-pop {
+  40% {
+    transform: scale(1.14);
+  }
+}
+
+@keyframes ring-out {
+  from {
+    transform: scale(0.4);
+    opacity: 1;
+  }
+  to {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+
+@keyframes piece-fly {
+  0% {
+    transform: translate(0, 0) scale(0.4) rotate(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translate(var(--dx), var(--dy)) scale(1) rotate(calc(var(--rot) * 0.7));
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(var(--dx) * 1.1), calc(var(--dy) + 46px)) scale(0.8) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flag-btn,
+  .flag-btn.is-chosen .flag-disc,
+  .flag-btn.is-chosen .flag-name {
+    animation: none;
+  }
+  .lang-fx {
+    display: none;
+  }
+}
